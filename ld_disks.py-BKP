@@ -1,0 +1,43 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
+import subprocess
+
+
+### Disk Choice
+
+def func_disk_choice():
+
+	## List disks & add to dictionnary
+
+	disk_listing = subprocess.Popen(['blkid'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+	disk_choice = 0
+	disk_dico = {}
+
+	print ("# Here is the available disks #\n")
+
+	for line in iter(disk_listing.stdout.readline, b''):
+		disk_choice += 1
+		disk_dico[disk_choice] = line.rstrip()
+		print(str(disk_choice) + " >>> " + line.rstrip()).split(":")[0]
+
+	## Make choice of disk
+
+	print ("\n# Make your choice [1-" + str(disk_choice)  + "] : ")
+	disk_used = input()
+	
+	if disk_used not in range(1, disk_choice + 1):
+               	print ("\n# Error")
+		print ("Something wrong with your choice, exiting..")
+               	exit(1)
+
+	print ("\n# Confirmation")
+	print ("Are your sure to use : " + disk_dico[disk_used] + " [y/n] :") 
+	disk_used_validation = raw_input()
+
+	if disk_used_validation not in ("y", "Y", "n", "N"):
+		print ("\n# Error")
+		print ("Something wrong with your choice, exiting..")
+		exit(1)
