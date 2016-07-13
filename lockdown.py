@@ -1,17 +1,20 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+# Requires : pyudev
+
 import ld_disks
 import ld_files
 
 
 def lockdown_menu():
 	# Selection Menu
-	print ("# Lockdown Menu")
+	print ("\n##### Lockdown Menu #####")
 	print ("\n0 >>> Install/Configure requirements")
 	print ("1 >>> Prepare disk to use with lockdown")
 	print ("99 >>> Quit Lockdown")
-	
+
+	print ("\nMake your choice:")	
 	menu_selection00 = input()
 	
 	if menu_selection00 == 0:
