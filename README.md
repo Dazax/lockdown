@@ -1,7 +1,10 @@
-# lockdown
-
-- Requirements : pyudev
-
+# Lockdown
+======
 ## Goal:
 
 Autolock station when removing usb key (personal & unique).
+
+------
+
+## Requirements: 
+- pyudev
